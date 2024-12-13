@@ -22,7 +22,6 @@ void floydWarshallAlgorithm(vector<vector<float>>& D, vector<vector<int>>& P, in
             }
         }
     }
-
     //D table
     for(int k = 0; k < n; k++) {
         for(int i = 0; i < n; i++) {
@@ -51,7 +50,6 @@ void getPath(int i, int j, vector<vector<int>>& P, ofstream& outputFile) {
 
 //escapsulates the getPath and floydWarshallAlgorithm functions + their running time and also prints/writes final D and P tables
 void runTestCases(vector<vector<float>> D, vector<vector<int>> P, int n, ofstream& outputFile) {
-    printf("Running test cases");
     auto start = std::chrono::high_resolution_clock::now();
     floydWarshallAlgorithm(D, P, n);
     auto stop = std::chrono::high_resolution_clock::now();
@@ -77,6 +75,7 @@ void runTestCases(vector<vector<float>> D, vector<vector<int>> P, int n, ofstrea
             outputFile << "; Distance: " << D[r][c] << endl;
         }
     }
+    cout << "Floyd-Warshall execution time: " << duration_milliseconds.count() << "ms";
     outputFile << "Running time: " << duration_milliseconds.count() << "ms" << endl << endl;
 }
 
@@ -95,7 +94,7 @@ int main(int argc, char* argv[]) {
 
     int i, j;
     float val;
-    int n = 47;
+    int n = 500;
 
     vector<vector<float>> distance;
     vector<vector<int>> predecessor;

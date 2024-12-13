@@ -19,11 +19,10 @@ def get_intersection_coordinates(street_one, street_two):
 def get_boba_coordinates(address):
     params = {"address": address, "key": API_KEY}
     response = requests.get(BASE_URL, params=params)
-    if response.status_code == 200:
-        data = response.json()
-        if data['results']:
-            location = data['results'][0]['geometry']['location']
-            return location['lat'], location['lng']
+    data = response.json()
+    if data['results']:
+        location = data['results'][0]['geometry']['location']
+        return location['lat'], location['lng']
     return None
 
 intersection_streets = [
